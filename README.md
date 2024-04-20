@@ -7,7 +7,7 @@ Use the following command to install MauiMocks using NuGet package manager conso
 
     PM> Install-Package MauiMocks
 
-You can use this library in any .Net project which is compatible to .Net Framework 4.5+ and .Net Standard 1.3+ (e.g. Xamarin, WPF)
+You can use this library in any .NET MAUI test project from .NET 8 and later.
 
 ### API Usage
 `tbd`
