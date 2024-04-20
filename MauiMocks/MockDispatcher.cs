@@ -1,56 +1,56 @@
 namespace Microsoft.Maui
 {
-	public class MockDispatcher : IDispatcher
-	{
-        private readonly Func<bool>? _isInvokeRequired;
-        private readonly Action<Action>? _invokeOnMainThread;
+    public class MockDispatcher : IDispatcher
+    {
+        private readonly Func<bool>? isInvokeRequired;
+        private readonly Action<Action>? invokeOnMainThread;
 
-		public MockDispatcher(Func<bool>? isInvokeRequired, Action<Action>? invokeOnMainThread)
-		{
-			_isInvokeRequired = isInvokeRequired;
-			_invokeOnMainThread = invokeOnMainThread;
+        public MockDispatcher(Func<bool>? isInvokeRequired, Action<Action>? invokeOnMainThread)
+        {
+            this.isInvokeRequired = isInvokeRequired;
+            this.invokeOnMainThread = invokeOnMainThread;
 
-			ManagedThreadId = Environment.CurrentManagedThreadId;
-		}
+            this.ManagedThreadId = Environment.CurrentManagedThreadId;
+        }
 
-		public bool IsDispatchRequired =>
-			_isInvokeRequired?.Invoke() ?? false;
+        public bool IsDispatchRequired =>
+            this.isInvokeRequired?.Invoke() ?? false;
 
-		public int ManagedThreadId { get; }
+        public int ManagedThreadId { get; }
 
-		public bool Dispatch(Action action)
-		{
-			if (_invokeOnMainThread is null)
+        public bool Dispatch(Action action)
+        {
+            if (this.invokeOnMainThread is null)
             {
                 action();
             }
             else
             {
-                _invokeOnMainThread.Invoke(action);
+                this.invokeOnMainThread.Invoke(action);
             }
 
             return true;
-		}
+        }
 
-		public bool DispatchDelayed(TimeSpan delay, Action action)
-		{
-			Timer? timer = null;
+        public bool DispatchDelayed(TimeSpan delay, Action action)
+        {
+            Timer? timer = null;
 
-			timer = new Timer(OnTimeout, null, delay, delay);
+            timer = new Timer(OnTimeout, null, delay, delay);
 
-			return true;
+            return true;
 
-			void OnTimeout(object? state)
-			{
-				Dispatch(action);
+            void OnTimeout(object? state)
+            {
+                this.Dispatch(action);
 
-				timer?.Dispose();
-			}
-		}
+                timer?.Dispose();
+            }
+        }
 
-		public IDispatcherTimer CreateTimer()
-		{
-			return new MockDispatcherTimer(this);
-		}
-	}
+        public IDispatcherTimer CreateTimer()
+        {
+            return new MockDispatcherTimer(this);
+        }
+    }
 }

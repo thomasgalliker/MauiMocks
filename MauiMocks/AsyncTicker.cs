@@ -8,24 +8,24 @@ namespace Microsoft.Maui
 
         public override async void Start()
         {
-            cancellationTokenSource = new CancellationTokenSource();
+            this.cancellationTokenSource = new CancellationTokenSource();
 
-            while (!cancellationTokenSource.IsCancellationRequested)
+            while (!this.cancellationTokenSource.IsCancellationRequested)
             {
-                Fire?.Invoke();
+                this.Fire?.Invoke();
 
-                if (!cancellationTokenSource.IsCancellationRequested)
+                if (!this.cancellationTokenSource.IsCancellationRequested)
                 {
                     await Task.Delay(TimeSpan.FromMilliseconds(16));
                 }
             }
         }
 
-        public override void Stop() => cancellationTokenSource?.Cancel();
+        public override void Stop() => this.cancellationTokenSource?.Cancel();
 
         public void Dispose()
         {
-            cancellationTokenSource?.Dispose();
+            this.cancellationTokenSource?.Dispose();
         }
     }
 }

@@ -2,37 +2,37 @@ namespace Microsoft.Maui
 {
     public class MockDispatcherTimer : IDispatcherTimer
     {
-        private readonly MockDispatcher _mockDispatcher;
+        private readonly MockDispatcher mockDispatcher;
 
-        private Timer? _timer;
+        private Timer? timer;
 
         public MockDispatcherTimer(MockDispatcher mockDispatcher)
         {
-            _mockDispatcher = mockDispatcher;
+            this.mockDispatcher = mockDispatcher;
         }
 
         public TimeSpan Interval { get; set; }
 
         public bool IsRepeating { get; set; }
 
-        public bool IsRunning => _timer != null;
+        public bool IsRunning => this.timer != null;
 
         public event EventHandler? Tick;
 
         public void Start()
         {
-            _timer = new Timer(OnTimeout, null, Interval, IsRepeating ? Interval : Timeout.InfiniteTimeSpan);
+            this.timer = new Timer(OnTimeout, null, this.Interval, this.IsRepeating ? this.Interval : Timeout.InfiniteTimeSpan);
 
             void OnTimeout(object? state)
             {
-                _mockDispatcher.Dispatch(() => Tick?.Invoke(this, EventArgs.Empty));
+                this.mockDispatcher.Dispatch(() => Tick?.Invoke(this, EventArgs.Empty));
             }
         }
 
         public void Stop()
         {
-            _timer?.Dispose();
-            _timer = null;
+            this.timer?.Dispose();
+            this.timer = null;
         }
     }
 }

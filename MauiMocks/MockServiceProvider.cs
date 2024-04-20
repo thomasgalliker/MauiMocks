@@ -4,7 +4,7 @@ namespace Microsoft.Maui
 {
     public class MockServiceProvider : IServiceProvider
     {
-        private readonly Dictionary<Type, object> _services = new();
+        private readonly Dictionary<Type, object> services = new Dictionary<Type, object>();
 
         public MockServiceProvider(params (Type serviceType, object serviceImplementation)[] services)
         {
@@ -12,29 +12,29 @@ namespace Microsoft.Maui
             {
                 foreach (var s in services)
                 {
-                    _services[s.serviceType] = s.serviceImplementation;
+                    this.services[s.serviceType] = s.serviceImplementation;
                 }
             }
 
-            if (!_services.ContainsKey(typeof(IAnimationManager)))
+            if (!this.services.ContainsKey(typeof(IAnimationManager)))
             {
-                _services.Add(typeof(IAnimationManager), new MockAnimationManager(new AsyncTicker()));
+                this.services.Add(typeof(IAnimationManager), new MockAnimationManager(new AsyncTicker()));
             }
 
-            if (!_services.ContainsKey(typeof(IFontRegistrar)))
+            if (!this.services.ContainsKey(typeof(IFontRegistrar)))
             {
-                _services.Add(typeof(IFontRegistrar), new MockFontRegistrar());
+                this.services.Add(typeof(IFontRegistrar), new MockFontRegistrar());
             }
 
-            if (!_services.ContainsKey(typeof(IFontManager)))
+            if (!this.services.ContainsKey(typeof(IFontManager)))
             {
-                _services.Add(typeof(IFontManager), new MockFontManager());
+                this.services.Add(typeof(IFontManager), new MockFontManager());
             }
         }
 
         public object GetService(Type serviceType)
         {
-            return _services?[serviceType];
+            return this.services?[serviceType];
         }
     }
 }
