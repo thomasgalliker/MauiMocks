@@ -14,7 +14,7 @@ namespace Microsoft.Maui
         {
             if (serviceType == typeof(IAnimationManager))
             {
-                return AnimationAnimationManager;
+                return this.AnimationAnimationManager;
             }
             else if (serviceType == typeof(IDispatcher))
             {

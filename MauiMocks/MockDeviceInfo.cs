@@ -4,16 +4,16 @@ namespace Microsoft.Maui
     {
         public MockDeviceInfo()
         {
-            Platform = DevicePlatform.Unknown;
-            Idiom = DeviceIdiom.Unknown;
-            DeviceType = DeviceType.Unknown;
+            this.Platform = DevicePlatform.Unknown;
+            this.Idiom = DeviceIdiom.Unknown;
+            this.DeviceType = DeviceType.Unknown;
         }
 
         public MockDeviceInfo(DevicePlatform? platform = null, DeviceIdiom? idiom = null, DeviceType? deviceType = null)
         {
-            Platform = platform ?? DevicePlatform.Unknown;
-            Idiom = idiom ?? DeviceIdiom.Unknown;
-            DeviceType = deviceType ?? DeviceType.Unknown;
+            this.Platform = platform ?? DevicePlatform.Unknown;
+            this.Idiom = idiom ?? DeviceIdiom.Unknown;
+            this.DeviceType = deviceType ?? DeviceType.Unknown;
         }
 
         public string Model { get; set; }

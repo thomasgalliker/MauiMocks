@@ -1,6 +1,6 @@
 namespace Microsoft.Maui.Controls
 {
-   
+
     public class MockContentView : MockContentView<object>
     {
     }

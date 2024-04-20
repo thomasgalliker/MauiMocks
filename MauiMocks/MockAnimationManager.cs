@@ -8,8 +8,8 @@ namespace Microsoft.Maui
 
         public MockAnimationManager(ITicker ticker)
         {
-            Ticker = ticker;
-            Ticker.Fire = OnFire;
+            this.Ticker = ticker;
+            this.Ticker.Fire = this.OnFire;
         }
 
         public double SpeedModifier { get; set; } = 1;
@@ -20,19 +20,19 @@ namespace Microsoft.Maui
 
         public void Add(Microsoft.Maui.Animations.Animation animation)
         {
-            animations.Add(animation);
-            if (AutoStartTicker && !Ticker.IsRunning)
+            this.animations.Add(animation);
+            if (this.AutoStartTicker && !this.Ticker.IsRunning)
             {
-                Ticker.Start();
+                this.Ticker.Start();
             }
         }
 
         public void Remove(Microsoft.Maui.Animations.Animation animation)
         {
-            animations.Remove(animation);
-            if (!animations.Any())
+            this.animations.Remove(animation);
+            if (!this.animations.Any())
             {
-                Ticker.Stop();
+                this.Ticker.Stop();
             }
         }
 
@@ -43,7 +43,7 @@ namespace Microsoft.Maui
 
             if (!this.animations.Any())
             {
-                Ticker.Stop();
+                this.Ticker.Stop();
             }
 
             void AnimationTick(Microsoft.Maui.Animations.Animation animation)

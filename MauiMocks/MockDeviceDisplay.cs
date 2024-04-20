@@ -2,30 +2,30 @@ namespace Microsoft.Maui
 {
     public class MockDeviceDisplay : IDeviceDisplay
     {
-        private DisplayInfo _mainDisplayInfo = new DisplayInfo(100, 200, 2, DisplayOrientation.Portrait, DisplayRotation.Rotation0);
+        private DisplayInfo mainDisplayInfo = new DisplayInfo(100, 200, 2, DisplayOrientation.Portrait, DisplayRotation.Rotation0);
 
         public bool KeepScreenOn { get; set; }
 
         public event EventHandler<DisplayInfoChangedEventArgs>? MainDisplayInfoChanged;
 
-        public DisplayInfo MainDisplayInfo => _mainDisplayInfo;
+        public DisplayInfo MainDisplayInfo => this.mainDisplayInfo;
 
         public void UpdateMainDisplayInfo(DisplayInfo displayInfo)
         {
-            _mainDisplayInfo = displayInfo;
+            this.mainDisplayInfo = displayInfo;
             MainDisplayInfoChanged?.Invoke(this, new DisplayInfoChangedEventArgs(displayInfo));
         }
 
         public void SetMainDisplayOrientation(DisplayOrientation portrait)
         {
             var info = new DisplayInfo(
-                _mainDisplayInfo.Width,
-                _mainDisplayInfo.Height,
-                _mainDisplayInfo.Density,
+                this.mainDisplayInfo.Width,
+                this.mainDisplayInfo.Height,
+                this.mainDisplayInfo.Density,
                 portrait,
-                _mainDisplayInfo.Rotation);
+                this.mainDisplayInfo.Rotation);
 
-            UpdateMainDisplayInfo(info);
+            this.UpdateMainDisplayInfo(info);
         }
     }
 }

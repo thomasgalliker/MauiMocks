@@ -3,19 +3,19 @@ namespace Microsoft.Maui
     // Original source: https://github.com/dotnet/maui/blob/main/src/Core/tests/UnitTests/TestClasses/DispatcherStub.cs
     public class MockDispatcherProvider : IDispatcherProvider, IDisposable
     {
-        private readonly ThreadLocal<IDispatcher?> _dispatcherInstance = new ThreadLocal<IDispatcher?>(() =>
+        private readonly ThreadLocal<IDispatcher?> dispatcherInstance = new ThreadLocal<IDispatcher?>(() =>
             MockDispatcherProviderOptions.SkipDispatcherCreation
                 ? null
                 : new MockDispatcher(MockDispatcherProviderOptions.IsInvokeRequired, MockDispatcherProviderOptions.InvokeOnMainThread));
 
         public void Dispose()
         {
-            _dispatcherInstance.Dispose();
+            this.dispatcherInstance.Dispose();
         }
 
         public IDispatcher? GetForCurrentThread()
         {
-            var dispatcher = _dispatcherInstance.Value;
+            var dispatcher = this.dispatcherInstance.Value;
 
             if (dispatcher == null)
             {
@@ -25,7 +25,7 @@ namespace Microsoft.Maui
             return dispatcher;
         }
     }
-    
+
     public class MockDispatcherProviderOptions
     {
         [ThreadStatic]
