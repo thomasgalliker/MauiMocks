@@ -2,10 +2,10 @@
 MauiMocks helps mocking services in unit tests of .NET MAUI test projects.
 
 ### Download and Install MauiMocks
-This library is available on NuGet: https://www.nuget.org/packages/MauiMocks/
+This library is available on NuGet: https://www.nuget.org/packages/Mocks.Maui
 Use the following command to install MauiMocks using NuGet package manager console:
 
-    PM> Install-Package MauiMocks
+    PM> Install-Package Mocks.Maui
 
 You can use this library in any .NET MAUI test project from .NET 8 and later.
 
