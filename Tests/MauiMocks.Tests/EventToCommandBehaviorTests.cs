@@ -4,6 +4,7 @@ using Xunit;
 
 namespace Microsoft.Maui.Tests
 {
+    [Collection("MauiMocks")]
     public class EventToCommandBehaviorTests : IDisposable
     {
         public EventToCommandBehaviorTests()
