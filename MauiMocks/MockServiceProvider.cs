@@ -1,4 +1,5 @@
 using Microsoft.Maui.Animations;
+using Microsoft.Maui.Timers;
 
 namespace Microsoft.Maui
 {
@@ -18,7 +19,7 @@ namespace Microsoft.Maui
 
             if (!this.services.ContainsKey(typeof(IAnimationManager)))
             {
-                this.services.Add(typeof(IAnimationManager), new MockAnimationManager(new AsyncTicker()));
+                this.services.Add(typeof(IAnimationManager), new MockAnimationManager(new SyncTimer()));
             }
 
             if (!this.services.ContainsKey(typeof(IFontRegistrar)))
@@ -29,6 +30,11 @@ namespace Microsoft.Maui
             if (!this.services.ContainsKey(typeof(IFontManager)))
             {
                 this.services.Add(typeof(IFontManager), new MockFontManager());
+            }
+
+            if (!this.services.ContainsKey(typeof(IDispatcher)))
+            {
+                this.services.Add(typeof(IDispatcher), () => new MockDispatcherProvider().GetForCurrentThread());
             }
         }
 

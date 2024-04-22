@@ -1,9 +1,11 @@
 using Microsoft.Maui.Animations;
 
-namespace Microsoft.Maui
+namespace Microsoft.Maui.Timers
 {
     public sealed class AsyncTicker : Ticker, IDisposable
     {
+        private static readonly TimeSpan Delay = TimeSpan.FromMilliseconds(16);
+
         private CancellationTokenSource? cancellationTokenSource;
 
         public override async void Start()
@@ -16,7 +18,7 @@ namespace Microsoft.Maui
 
                 if (!this.cancellationTokenSource.IsCancellationRequested)
                 {
-                    await Task.Delay(TimeSpan.FromMilliseconds(16));
+                    await Task.Delay(Delay);
                 }
             }
         }

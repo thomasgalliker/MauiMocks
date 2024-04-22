@@ -4,6 +4,7 @@ using Xunit;
 
 namespace Microsoft.Maui.Tests
 {
+    [Collection("MauiMocks")]
     public class EventToCommandBehaviorTests : IDisposable
     {
         public EventToCommandBehaviorTests()
@@ -41,6 +42,19 @@ namespace Microsoft.Maui.Tests
 
             // Assert
             didEventToCommandBehaviorFire.Should().BeTrue();
+        }
+
+        [Fact]
+        public void ShouldUseMockAnimationHandler()
+        {
+            // Arrange
+            var listView = new ListView();
+
+            // Act
+            listView.UseMockAnimationHandler();
+
+            // Assert
+            listView.Handler.Should().BeOfType<MockAnimationHandler>();
         }
 
         public void Dispose()
