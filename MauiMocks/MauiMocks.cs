@@ -4,26 +4,55 @@ namespace Microsoft.Maui
 {
     public static class MauiMocks
     {
+        private static readonly object lockObj = new object();
+        private static bool isInitialized;
+
+        public static bool IsInitialized
+        {
+            get
+            {
+                lock (lockObj)
+                {
+                    return isInitialized;
+                }
+            }
+        }
+
         public static void Init()
         {
-            var application = new MockApplication();
-            application.Handler = new MockApplicationHandler();
-            application.Handler.SetMauiContext(new MockMauiContext());
+            lock (lockObj)
+            {
+                if (!isInitialized)
+                {
+                    var application = new MockApplication();
+                    application.Handler = new MockApplicationHandler();
+                    application.Handler.SetMauiContext(new MockMauiContext());
 
-            Application.SetCurrentApplication(application);
-            DispatcherProvider.SetCurrent(new MockDispatcherProvider());
+                    Application.SetCurrentApplication(application);
+                    DispatcherProvider.SetCurrent(new MockDispatcherProvider());
 
-            DeviceDisplay.SetCurrent(new MockDeviceDisplay());
-            DeviceInfo.SetCurrent(new MockDeviceInfo());
+                    DeviceDisplay.SetCurrent(new MockDeviceDisplay());
+                    DeviceInfo.SetCurrent(new MockDeviceInfo());
+
+                    isInitialized = true;
+                }
+            }
         }
 
         public static void Reset()
         {
-            Application.SetCurrentApplication(null);
-            DispatcherProvider.SetCurrent(null);
+            lock (lockObj)
+            {
+                if (isInitialized)
+                {
+                    Application.SetCurrentApplication(null);
+                    DispatcherProvider.SetCurrent(null);
 
-            DeviceDisplay.SetCurrent(null);
-            DeviceInfo.SetCurrent(null);
+                    DeviceDisplay.SetCurrent(null);
+                    DeviceInfo.SetCurrent(null);
+                    isInitialized = false;
+                }
+            }
         }
 
         public static class DeviceDisplay
