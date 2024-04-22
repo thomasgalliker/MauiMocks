@@ -43,6 +43,19 @@ namespace Microsoft.Maui.Tests
             didEventToCommandBehaviorFire.Should().BeTrue();
         }
 
+        [Fact]
+        public void ShouldUseMockAnimationHandler()
+        {
+            // Arrange
+            var listView = new ListView();
+
+            // Act
+            listView.UseMockAnimationHandler();
+
+            // Assert
+            listView.Handler.Should().BeOfType<MockAnimationHandler>();
+        }
+
         public void Dispose()
         {
             MauiMocks.Reset();

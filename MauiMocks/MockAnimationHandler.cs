@@ -9,17 +9,18 @@ namespace Microsoft.Maui
     {
         public MockAnimationHandler(IAnimationManager animationManager) : base(new PropertyMapper<IView>())
         {
-            this.SetMauiContext(new AnimationEnabledMauiContext(animationManager));
+            var services = new (Type, object)[]
+            {
+                (typeof(IAnimationManager), animationManager)
+            };
+
+            this.SetMauiContext(new MockMauiContext(services));
         }
 
         public MockAnimationHandler() : this(new MockAnimationManager(new SyncTimer()))
         {
         }
 
-        public IAnimationManager? AnimationManager => ((AnimationEnabledMauiContext?)this.MauiContext)?.AnimationAnimationManager;
-
         protected override object CreatePlatformView() => new();
-
-
     }
 }

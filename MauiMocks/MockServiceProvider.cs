@@ -31,6 +31,11 @@ namespace Microsoft.Maui
             {
                 this.services.Add(typeof(IFontManager), new MockFontManager());
             }
+
+            if (!this.services.ContainsKey(typeof(IDispatcher)))
+            {
+                this.services.Add(typeof(IDispatcher), () => new MockDispatcherProvider().GetForCurrentThread());
+            }
         }
 
         public object GetService(Type serviceType)

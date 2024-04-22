@@ -9,7 +9,9 @@ namespace Microsoft.Maui
 
         public IServiceProvider Services { get; }
 
-        public IMauiHandlersFactory Handlers
-            => this.Services.GetService(typeof(IMauiHandlersFactory)) as IMauiHandlersFactory;
+        public IMauiHandlersFactory? Handlers
+        {
+            get => this.Services.GetService(typeof(IMauiHandlersFactory)) as IMauiHandlersFactory;
+        }
     }
 }
