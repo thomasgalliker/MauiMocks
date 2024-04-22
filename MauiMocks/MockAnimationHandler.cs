@@ -1,5 +1,6 @@
 using Microsoft.Maui.Animations;
 using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Timers;
 
 namespace Microsoft.Maui
 {
@@ -11,7 +12,7 @@ namespace Microsoft.Maui
             this.SetMauiContext(new AnimationEnabledMauiContext(animationManager));
         }
 
-        public MockAnimationHandler() : this(new MockAnimationManager(new AsyncTicker()))
+        public MockAnimationHandler() : this(new MockAnimationManager(new SyncTimer()))
         {
         }
 

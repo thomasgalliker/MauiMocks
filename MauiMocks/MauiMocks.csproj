@@ -26,8 +26,11 @@
     <RepositoryUrl>https://github.com/thomasgalliker/MauiMocks</RepositoryUrl>
     <Company>superdev GmbH</Company>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <PackageReleaseNotes>1.0.0
-      - MauiMocks class with Init and Reset methods
+    <PackageReleaseNotes>1.1.0
+- Use synchronous timer (SyncTimer) in MockAnimationHandler as default
+
+1.0.0
+- MauiMocks class with Init and Reset methods
     </PackageReleaseNotes>
     <Copyright>Copyright $([System.DateTime]::Now.ToString(`yyyy`)) © Thomas Galliker</Copyright>
     <PackageReadmeFile>README.md</PackageReadmeFile>
