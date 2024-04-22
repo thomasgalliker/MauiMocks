@@ -20,7 +20,7 @@
     <Version>1.0.0</Version>
     <Authors>Thomas Galliker</Authors>
     <PackageId>Mocks.Maui</PackageId>
-    <PackageTags>maui;mock;mocks;test;unit;testing;mocking</PackageTags>
+    <PackageTags>mauimocks;maui;mock;mocks;test;tests;unit;testing;mocking</PackageTags>
     <PackageProjectUrl>https://github.com/thomasgalliker/MauiMocks</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/thomasgalliker/MauiMocks</RepositoryUrl>
