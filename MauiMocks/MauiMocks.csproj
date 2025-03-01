@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     <RootNamespace>Microsoft.Maui</RootNamespace>
     <OutputType>Library</OutputType>
     <UseMaui>true</UseMaui>
@@ -21,31 +21,35 @@
     <Authors>Thomas Galliker</Authors>
     <PackageId>Mocks.Maui</PackageId>
     <PackageTags>mauimocks;maui;mock;mocks;test;tests;unit;testing;mocking</PackageTags>
+    <PackageIcon>logo.png</PackageIcon>
     <PackageProjectUrl>https://github.com/thomasgalliker/MauiMocks</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/thomasgalliker/MauiMocks</RepositoryUrl>
     <Company>superdev GmbH</Company>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <PackageReleaseNotes>1.1.0
-- Use synchronous timer (SyncTimer) in MockAnimationHandler as default
-
-1.0.0
-- MauiMocks class with Init and Reset methods
-    </PackageReleaseNotes>
     <Copyright>Copyright $([System.DateTime]::Now.ToString(`yyyy`)) © Thomas Galliker</Copyright>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-  </PropertyGroup>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedAllSources>true</EmbedAllSources>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <PackageReleaseNotes>1.2
+- Add support for .NET 9.
+- Publish symbols nuget package (snupkg).
 
+1.1
+- Use synchronous timer (SyncTimer) in MockAnimationHandler as default
+
+1.0
+- MauiMocks class with Init and Reset methods
+    </PackageReleaseNotes>
+  </PropertyGroup>
+  
   <ItemGroup>
-    <None Include="..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Include="..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
+    <None Include="..\README.md" Pack="True" PackagePath="\" />
+    <None Include="..\LICENSE" Pack="True" PackagePath="\" />
+    <None Include="..\Images\logo.png" Pack="True" PackagePath="\" />
   </ItemGroup>
   
   <ItemGroup>
