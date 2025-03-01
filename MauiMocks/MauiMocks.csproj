@@ -27,8 +27,16 @@
     <RepositoryUrl>https://github.com/thomasgalliker/MauiMocks</RepositoryUrl>
     <Company>superdev GmbH</Company>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Copyright>Copyright $([System.DateTime]::Now.ToString(`yyyy`)) © Thomas Galliker</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedAllSources>true</EmbedAllSources>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <PackageReleaseNotes>1.2
 - Add support for .NET 9.
+- Publish symbols nuget package (snupkg).
 
 1.1
 - Use synchronous timer (SyncTimer) in MockAnimationHandler as default
@@ -36,9 +44,6 @@
 1.0
 - MauiMocks class with Init and Reset methods
     </PackageReleaseNotes>
-    <Copyright>Copyright $([System.DateTime]::Now.ToString(`yyyy`)) © Thomas Galliker</Copyright>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
   
   <ItemGroup>
