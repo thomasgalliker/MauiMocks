@@ -5,6 +5,8 @@
     <RootNamespace>Microsoft.Maui</RootNamespace>
     <OutputType>Library</OutputType>
     <UseMaui>true</UseMaui>
+    <MauiVersion Condition="$(TargetFramework.Contains('net8.0'))">8.0.3</MauiVersion>
+    <MauiVersion Condition="$(TargetFramework.Contains('net9.0'))">9.0.0</MauiVersion>
     <SingleProject>true</SingleProject>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
